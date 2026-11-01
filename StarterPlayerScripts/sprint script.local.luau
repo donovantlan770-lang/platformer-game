@@ -24,7 +24,7 @@ uis.InputBegan:Connect(function(input,gameprocessed)
 	-- to check if he is typing or not
 	if gameprocessed then return end
 	-- if left ctrl is pressed
-	if uis:IsKeyDown(Enum.KeyCode.LeftShift) then
+	if input.KeyCode == Enum.KeyCode.LeftShift or input.KeyCode == Enum.KeyCode.RightShift then
 		humanoid.WalkSpeed = 32
 		for i = 1,10 do 
 			camera.FieldOfView += 1
@@ -37,7 +37,7 @@ end)
 --#detect after his input ended
 uis.InputEnded:Connect(function(input,gameprocessed)
 	if gameprocessed then return end
-	if input.KeyCode == Enum.KeyCode.LeftShift then
+	if input.KeyCode == Enum.KeyCode.LeftShift or input.KeyCode == Enum.KeyCode.RightShift then
 		humanoid.WalkSpeed = 16
 		for i = 1,10 do
 			camera.FieldOfView -= 1

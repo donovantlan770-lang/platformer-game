@@ -1,6 +1,6 @@
 -- server dash script (recall section) --
 local rs = game:GetService("ReplicatedStorage")
-local dashe = rs:WaitForChild("dashevent")
+local dashe = rs:WaitForChild("remotes"):WaitForChild("dashevent")
 local camera = workspace.CurrentCamera
 local debris = game:GetService("Debris")
 
@@ -13,7 +13,7 @@ dashe.OnServerEvent:Connect(function(player,dir,cd)
 	
 	
 	local bv = Instance.new("BodyVelocity")
-	bv.MaxForce = Vector3.new(10000,0,10000)
+	bv.MaxForce = Vector3.new(50000,0,50000)
 	bv.Parent = hrp
 	
 	local dashduration = 0.5
@@ -39,6 +39,8 @@ dashe.OnServerEvent:Connect(function(player,dir,cd)
 	trail.Color  = ColorSequence.new(Color3.fromHSV(math.random(), 1, 1))
 	trail.Brightness = 1
 	trail.LightEmission = 1
+	
+	
 
 	dashe:FireClient(player,dir,cd)
 	for i = 0, dashduration, rate do
